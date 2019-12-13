@@ -1,0 +1,80 @@
+%pip install sportsreference
+
+choose_statistic = input("Sports Hub \nDo you want boxscore or schedule information:")
+choose_sport = input("Type what sport you would like to view? (MLB,NBA,NFL,NHL):")
+
+def view_MLB_schedule(choose_team):
+    team = choose_team
+    team_schedule = Schedule(team)
+    for game in team_schedule:
+        print(f'Game Date: {game.date}')  
+        print(f'Opponent: {game.opponent_abbr}')
+        print(f'Result: {game.result}')
+        print(f'Record: {game.record}')
+        print(f'Runs Scored: {game.runs_scored}')
+        print(f'Runs Allowed: {game.runs_allowed}\n')
+        
+def view_NBA_schedule(choose_team):
+    team = choose_team
+    team_schedule = Schedule(team)
+    for game in team_schedule:
+        print(f'Game Date: {game.date}')  
+        print(f'Opponent: {game.opponent_abbr}')
+        print(f'Result: {game.result}')
+        print(f'Wins: {game.wins}')
+        print(f'Losses: {game.losses}')
+        print(f'Points Scored: {game.points_scored}')
+        print(f'Points Allowed: {game.points_allowed}\n')
+
+def view_NFL_schedule(choose_team):
+    team = choose_team
+    team_schedule = Schedule(team)
+    for game in team_schedule:
+        print(f'Game Date: {game.date}')  
+        print(f'Opponent: {game.opponent_abbr}')
+        print(f'Result: {game.result}')
+        print(f'Week: {game.week}')
+        print(f'Points Scored: {game.points_scored}')
+        print(f'Points Allowed: {game.points_allowed}\n')
+        
+def view_NHL_schedule(choose_team):
+    team = choose_team
+    team_schedule = Schedule(team)
+    for game in team_schedule:
+        print(f'Game Date: {game.date}')  
+        print(f'Opponent: {game.opponent_abbr}')
+        print(f'Result: {game.result}')
+        print(f'Goals Scored: {game.goals_scored}')
+        print(f'Goals Allowed: {game.goals_allowed}\n')
+
+if choose_statistic == 'boxscore' and choose_sport == 'MLB':
+    from sportsreference.mlb.boxscore import Boxscore
+    
+elif choose_statistic == 'schedule' and choose_sport == 'MLB':
+    from sportsreference.mlb.schedule import Schedule
+    choose_team = input("Type in your favorite team's abbreviation to get their schedule: Ex:NYY or HOU \n")
+    view_MLB_schedule(choose_team)
+    
+elif choose_statistic == 'boxscore' and choose_sport == 'NBA': 
+    from sportsreference.nba.boxscore import Boxscore
+    
+elif choose_statistic == 'schedule' and choose_sport == 'NBA':
+    from sportsreference.nba.schedule import Schedule
+    choose_team = input("Type in your favorite team's abbreviation to get their schedule: Ex:NYK or GSW \n")
+    view_NBA_schedule(choose_team)
+    
+elif choose_statistic == 'boxscore' and choose_sport == 'NFL':
+    from sportsreference.nfl.boxscore import Boxscore
+    
+elif choose_statistic == 'schedule' and choose_sport == 'NFL':
+    from sportsreference.nfl.schedule import Schedule
+    choose_team = input("Type in your favorite team's abbreviation to get their schedule: Ex:NYG or DAL \n")
+    view_NFL_schedule(choose_team)
+    
+elif choose_statistic == 'boxscore' and choose_sport == 'NHL':
+    from sportsreference.nhl.boxscore import Boxscore
+    
+elif choose_statistic == 'schedule' and choose_sport == 'NHL':
+    from sportsreference.nhl.schedule import Schedule
+    choose_team = input("Type in your favorite team's abbreviation to get their schedule: Ex:NYR or VEG \n")
+    view_NHL_schedule(choose_team)
