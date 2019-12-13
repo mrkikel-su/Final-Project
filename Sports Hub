@@ -78,3 +78,4 @@ elif choose_statistic == 'schedule' and choose_sport == 'NHL':
     from sportsreference.nhl.schedule import Schedule
     choose_team = input("Type in your favorite team's abbreviation to get their schedule: Ex:NYR or VEG \n")
     view_NHL_schedule(choose_team)
+    
