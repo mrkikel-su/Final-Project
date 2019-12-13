@@ -1,0 +1,141 @@
+import pandas as pd
+import warnings
+warnings.filterwarnings('ignore')
+    
+# Functions
+def view_MLB_schedule(choose_team):
+    list_date = []
+    list_opponent = []
+    list_result = []
+    list_record = []
+    list_runs_scored = []
+    list_runs_allowed = []
+    team = choose_team
+    team_schedule = Schedule(team)
+    for game in team_schedule:
+        list_date.append(game.date)  
+        list_opponent.append(game.opponent_abbr)
+        list_result.append(game.result)
+        list_record.append(game.record)
+        list_runs_scored.append(game.runs_scored)
+        list_runs_allowed.append(game.runs_allowed)
+        
+    series_dict = {'Game Date' : list_date, 'Opponent' : list_opponent, 'Result' : list_result,
+                      'Record' : list_record, 'Runs Scored' : list_runs_scored, 'Runs Allowed' : list_runs_allowed}
+    schedule = pd.DataFrame(series_dict)
+    pd.set_option('display.max_rows', 162)
+    print(schedule)
+        
+        
+def view_NBA_schedule(choose_team):
+    list_date = []
+    list_opponent = []
+    list_result = []
+    list_wins = []
+    list_losses = []
+    list_points_scored = []
+    list_points_allowed = []
+    team = choose_team
+    team_schedule = Schedule(team)
+    for game in team_schedule:
+        list_date.append(game.date)  
+        list_opponent.append(game.opponent_abbr)
+        list_result.append(game.result)
+        list_wins.append(game.wins)
+        list_losses.append(game.losses)
+        list_points_scored.append(game.points_scored)
+        list_points_allowed.append(game.points_allowed)
+        
+    series_dict = {'Game Date' : list_date, 'Opponent' : list_opponent, 'Result' : list_result,
+                      'Wins' : list_wins, 'Losses' : list_losses, 'Points Scored' : list_points_scored, 'Points Allowed' : list_points_allowed}
+    schedule = pd.DataFrame(series_dict)
+    pd.set_option('display.max_rows', 162)
+    print(schedule)
+
+def view_NFL_schedule(choose_team):
+    list_date = []
+    list_opponent = []
+    list_result = []
+    list_week = []
+    list_points_scored = []
+    list_points_allowed = []
+    team = choose_team
+    team_schedule = Schedule(team)
+    for game in team_schedule:
+        list_date.append(game.date)  
+        list_opponent.append(game.opponent_abbr)
+        list_result.append(game.result)
+        list_week.append(game.week)
+        list_points_scored.append(game.points_scored)
+        list_points_allowed.append(game.points_allowed)
+        
+    series_dict = {'Game Date' : list_date, 'Opponent' : list_opponent, 'Result' : list_result,
+                      'Week' : list_week, 'Points Scored' : list_points_scored, 'Points Allowed' : list_points_allowed}
+    schedule = pd.DataFrame(series_dict)
+    pd.set_option('display.max_rows', 162)
+    print(schedule)
+
+        
+def view_NHL_schedule(choose_team):
+    list_date = []
+    list_opponent = []
+    list_result = []
+    list_goals_scored = []
+    list_goals_allowed = []
+    team = choose_team
+    team_schedule = Schedule(team)
+    for game in team_schedule:
+        list_date.append(game.date)  
+        list_opponent.append(game.opponent_abbr)
+        list_result.append(game.result)
+        list_goals_scored.append(game.goals_scored)
+        list_goals_allowed.append(game.goals_allowed)
+        
+    series_dict = {'Game Date' : list_date, 'Opponent' : list_opponent, 'Result' : list_result,
+                      'Goals Scored' : list_goals_scored, 'Goals Allowed' : list_goals_allowed}
+    schedule = pd.DataFrame(series_dict)
+    pd.set_option('display.max_rows', 162)
+    print(schedule)
+
+# start of code 
+while 2>1: 
+
+    choose_statistic = input("Sports Hub \nDo you want boxscore or schedule information:")
+    choose_statistic = choose_statistic.lower()
+    choose_sport = input("Type what sport you would like to view? (MLB,NBA,NFL,NHL):")
+    choose_sport = choose_sport.upper()
+    
+    if choose_statistic == 'boxscore' and choose_sport == 'MLB':
+        from sportsreference.mlb.boxscore import Boxscore
+    
+    elif choose_statistic == 'schedule' and choose_sport == 'MLB':
+        from sportsreference.mlb.schedule import Schedule
+        choose_team = input("Type in your favorite team's abbreviation to get their schedule: Ex:NYY or HOU \n")
+        view_MLB_schedule(choose_team)   
+        
+    elif choose_statistic == 'boxscore' and choose_sport == 'NBA': 
+        from sportsreference.nba.boxscore import Boxscore
+    
+    elif choose_statistic == 'schedule' and choose_sport == 'NBA':
+        from sportsreference.nba.schedule import Schedule
+        choose_team = input("Type in your favorite team's abbreviation to get their schedule: Ex:NYK or GSW \n")
+        view_NBA_schedule(choose_team)
+    
+    elif choose_statistic == 'boxscore' and choose_sport == 'NFL':
+        from sportsreference.nfl.boxscore import Boxscore
+    
+    elif choose_statistic == 'schedule' and choose_sport == 'NFL':
+        from sportsreference.nfl.schedule import Schedule
+        choose_team = input("Type in your favorite team's abbreviation to get their schedule: Ex:NYG or DAL \n")
+        view_NFL_schedule(choose_team)
+    
+    elif choose_statistic == 'boxscore' and choose_sport == 'NHL':
+        from sportsreference.nhl.boxscore import Boxscore
+    
+    elif choose_statistic == 'schedule' and choose_sport == 'NHL':
+        from sportsreference.nhl.schedule import Schedule
+        choose_team = input("Type in your favorite team's abbreviation to get their schedule: Ex:NYR or VEG \n")
+        view_NHL_schedule(choose_team)
+        
+    else: 
+        print("Please choose one of the choices provided!")
