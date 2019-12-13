@@ -151,7 +151,7 @@ while 2>1:
         if choose_statistic == 'roster' and choose_sport == 'MLB':
             from sportsreference.mlb.roster import Roster
             from sportsreference.mlb.teams import Teams
-            choose_team = input("Type in your favorite team's abbreviation to get their schedule: (Ex:NYY or HOU) ")
+            choose_team = input("Type in your favorite team's abbreviation to get their roster: (Ex:NYY or HOU) ")
             choose_team = choose_team.upper()
             teams = Teams()
             teamname_list_mlb = []
@@ -171,7 +171,7 @@ while 2>1:
         elif choose_statistic == 'roster' and choose_sport == 'NBA': 
             from sportsreference.nba.roster import Roster
             from sportsreference.nba.teams import Teams
-            choose_team = input("Type in your favorite team's abbreviation to get their schedule: (Ex:NYK or GSW) ")
+            choose_team = input("Type in your favorite team's abbreviation to get their roster: (Ex:NYK or GSW) ")
             choose_team = choose_team.upper()
             teams = Teams()
             teamname_list_nba = []
@@ -191,7 +191,7 @@ while 2>1:
         elif choose_statistic == 'roster' and choose_sport == 'NFL':
             from sportsreference.nfl.roster import Roster
             from sportsreference.nfl.teams import Teams
-            choose_team = input("Type in your favorite team's abbreviation to get their schedule: (Ex:NYG or DAL) ")
+            choose_team = input("Type in your favorite team's abbreviation to get their roster: (Ex:NYG or DAL) ")
             choose_team = choose_team.upper()
             teams = Teams()
             teamname_list_nfl = []
@@ -211,7 +211,7 @@ while 2>1:
         elif choose_statistic == 'roster' and choose_sport == 'NHL':
             from sportsreference.nhl.roster import Roster
             from sportsreference.nhl.teams import Teams
-            choose_team = input("Type in your favorite team's abbreviation to get their schedule: (Ex:NYR or VEG) ")
+            choose_team = input("Type in your favorite team's abbreviation to get their roster: (Ex:NYR or VEG) ")
             choose_team = choose_team.upper()
             teams = Teams()
             teamname_list_nhl = []
