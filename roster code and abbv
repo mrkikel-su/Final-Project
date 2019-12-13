@@ -1,0 +1,26 @@
+def teamdf(teams):
+    teamabbv_list = []
+    for team in teams:
+        teamabbv_list.append(team.abbreviation)
+
+    teamname_list = []
+    for team in teams:
+        teamname_list.append(team.name)
+
+    names = pd.Series(teamname_list, name = 'Names')
+    abbv = pd.Series(teamabbv_list, name = 'Abbreviation')
+    name_abbvdf = pd.DataFrame({"Team Name": names, "Team Abbreviation": abbv})
+    return name_abbvdf
+    
+nfl_data_frame = teamdf(teams)
+nfl_data_frame
+
+
+teamname_list_nhl = []
+for team in teams:
+    teamname_list_nhl.append(team.abbreviation)
+
+if abbv in teamname_list_nhl:
+    roster = Roster(abbv)
+    for player in roster.players:
+        print(player.name)
