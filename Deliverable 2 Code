@@ -1,1 +1,40 @@
+pip install sportsreference
+
+from sportsreference.mlb.teams import Teams
+
+from sportsreference.nhl.teams import Teams
+
+teams = Teams(2018)
+
+from sportsreference.nba.teams import Teams
+
+teams = Teams()
+for team in teams:
+    print(team.name, team.abbreviation)
+    
+ from sportsreference.nfl.teams import Teams
+
+teams = Teams()
+lions = teams('DET')
+
+from sportsreference.mlb.teams import Teams
+
+teams = Teams()
+for team in teams:
+    schedule = team.schedule  # Returns a Schedule instance for each team
+    # Returns a Pandas DataFrame of all metrics for all game Boxscores for
+    # a season.
+    df = team.schedule.dataframe_extended
+print(df)
+
+from sportsreference.ncaab.schedule import Schedule
+
+purdue_schedule = Schedule('purdue')
+for game in purdue_schedule:
+    print(game.date)
+    
+from sportsreference.ncaaf.boxscore import Boxscore
+
+championship_game = Boxscore('2018-01-08-georgia')
+print(championship_game.away_interceptions)
 
